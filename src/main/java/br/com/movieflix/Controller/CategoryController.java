@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/movieflix/category")
@@ -22,5 +23,15 @@ public class CategoryController {
     @PostMapping
     public Category saveCategory(@RequestBody Category category){
         return categoryService.saveCategory(category);
+    }
+
+    @GetMapping("/{id}")
+    public Category getById(@PathVariable Long id ){
+        Optional<Category> optionalCategory = categoryService.findById(id);
+        if (optionalCategory.isPresent()){
+            return optionalCategory.get();
+        }
+        return null;
+
     }
 }
