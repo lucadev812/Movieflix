@@ -1,13 +1,15 @@
-version: "3.8"
 services:
   postgres:
-    image: postgres:15
-    container_name: postgres_container
-    restart: always
+    image: postgres:15 # usa a mesma versão que já existia nos seus volumes
+    container_name: movieflix_postgres
     environment:
-      POSTGRES_DB: movieflix
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

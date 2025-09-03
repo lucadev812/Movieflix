@@ -28,10 +28,8 @@ public class CategoryController {
     @GetMapping("/{id}")
     public Category getById(@PathVariable Long id ){
         Optional<Category> optionalCategory = categoryService.findById(id);
-        if (optionalCategory.isPresent()){
-            return optionalCategory.get();
-        }
-        return null;
+        return optionalCategory.orElse(null);
 
     }
+
 }
