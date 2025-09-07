@@ -1,4 +1,5 @@
 package br.com.movieflix.Controller.Request;
 
-public class CategoryRequest {
+public record CategoryRequest(String name) {
+
 }
