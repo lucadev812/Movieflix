@@ -11,8 +11,10 @@ import java.util.List;
 public record MovieResponse(Long id,
                             String title,
                             String description,
-                            @JsonFormat
+
+                            @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
                             LocalDate releaseDate,
+
                             double rating,
                             List<CategoryResponse> categories,
                             List<StreamingResponse> streamings

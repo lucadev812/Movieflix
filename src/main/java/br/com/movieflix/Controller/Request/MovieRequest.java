@@ -9,8 +9,10 @@ import java.util.List;
 @Builder
 public record MovieRequest (String title,
                            String description,
-                           @JsonFormat
+
+                            @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
                            LocalDate releaseDate,
+
                            double rating,
                            List<Long> categories,
                            List<Long> streamings){
