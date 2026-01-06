@@ -3,6 +3,7 @@ package br.com.movieflix.Services;
 import br.com.movieflix.Repository.CategoryRepository;
 import br.com.movieflix.Repository.StreamingRepository;
 import br.com.movieflix.entity.Streaming;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +35,22 @@ public class StreamingService {
 
     public void deleteStreamingById(Long id){
         repository.deleteById(id);
+    }
+
+    @Transactional
+    public Optional<Streaming> updateStreaming(Long streamingId, Streaming streaming){
+        Optional<Streaming> streamings = repository.findById(streamingId);
+
+        if(streamings.isPresent()){
+            Streaming newStreaming = streamings.get();
+
+            newStreaming.setName(streaming.getName());
+
+            return Optional.of(newStreaming);
+
+        }
+        return Optional.empty();
+
     }
 
 }
