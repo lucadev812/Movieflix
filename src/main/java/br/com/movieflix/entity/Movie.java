@@ -31,17 +31,17 @@ public class Movie {
    @Column(name = "release_date")
    private LocalDate releaseDate;
 
-   private double ratting;
+   private double rating;
 
-   @CreationTimestamp
-   @Column(name = "createdAt")
-   private LocalDateTime createdAt;
+    @CreationTimestamp
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
 
-   @UpdateTimestamp
-   @Column(name = "updated_At")
-   private LocalDateTime updateAt;
+    @UpdateTimestamp
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 
-   @ManyToMany
+   @ManyToMany(cascade = CascadeType.MERGE)
    @JoinTable(name = "movie_category",
        joinColumns = @JoinColumn(name = "movie_id"),
        inverseJoinColumns = @JoinColumn(name = "category_id")
@@ -51,7 +51,7 @@ public class Movie {
     private List<Category> categories;
 
 
-   @ManyToMany
+   @ManyToMany(cascade = CascadeType.MERGE)
    @JoinTable(name = "movie_streaming",
            joinColumns = @JoinColumn(name = "movie_id"),
            inverseJoinColumns = @JoinColumn(name = "streaming_id")

@@ -49,7 +49,10 @@ public class StreamingController {
     public ResponseEntity<Void> deleteCategoryById(@PathVariable Long id){
         streamingService.deleteStreamingById(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+
     }
+
+
 
 
 }

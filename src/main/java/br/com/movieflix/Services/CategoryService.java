@@ -16,16 +16,25 @@ public class CategoryService {
 
     private final CategoryRepository categoryRepository;
 
+    // mostrar todas as categorias
+
     public List<Category> findAll(){
         return categoryRepository.findAll();
     }
+
+
+    //salvar categoria
     public Category saveCategory(Category category){
         return categoryRepository.save(category);
     }
 
+
+//procurar por id
     public Optional<Category> findById(Long id){
         return categoryRepository.findById(id);
     }
+
+    // deletar categoria
 
     public void deleteCategoryById(Long id){
      categoryRepository.deleteById(id);
