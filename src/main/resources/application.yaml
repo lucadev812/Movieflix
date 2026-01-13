@@ -23,3 +23,7 @@ spring:
 
 server:
   port: ${SERVER_PORT:8080}
+
+movieflix:
+  security:
+    secret: "308921u8rjfh29034hr9438r284r921hr94238r1290hfr8901038ur894hr89h498r48975gf9whg9840919r4rffhjoqepof439"

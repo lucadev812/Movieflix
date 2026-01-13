@@ -1,19 +1,14 @@
 package br.com.movieflix.Services;
 
 
-
-import br.com.movieflix.Controller.Request.MovieRequest;
-import br.com.movieflix.Controller.response.MovieResponse;
 import br.com.movieflix.Repository.MovieRepository;
 import br.com.movieflix.entity.Category;
 import br.com.movieflix.entity.Movie;
 import br.com.movieflix.entity.Streaming;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import javax.imageio.spi.ServiceRegistry;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -81,6 +76,12 @@ public class MovieService {
         }
         return Optional.empty();
 
+
+    }
+
+    public void deleteMovie(Long id){
+
+        movieRepository.deleteById(id);
 
     }
 
